@@ -1,10 +1,17 @@
 // public/game.js
 
+/**
+ * BootScene is responsible for loading the initial configuration and assets.
+ * It displays a loading bar and transitions to the MainScene once loading is complete.
+ */
 class BootScene extends Phaser.Scene {
   constructor() {
     super('BootScene');
   }
   
+  /**
+   * Preloads the scene configuration and updates the loading bar.
+   */
   preload() {
     // Show the loading bar element
     const loadingBar = document.getElementById('loading-bar');
@@ -19,6 +26,9 @@ class BootScene extends Phaser.Scene {
     });
   }
   
+  /**
+   * Creates the scene by hiding the loading bar and starting the MainScene.
+   */
   create() {
     // Hide the loading bar once JSON is loaded.
     const loadingBar = document.getElementById('loading-bar');
@@ -37,16 +47,26 @@ class BootScene extends Phaser.Scene {
   }
 }
 
+/**
+ * MainScene is responsible for rendering the game map and handling player interactions.
+ */
 class MainScene extends Phaser.Scene {
   constructor() {
     super('MainScene');
   }
   
+  /**
+   * Initializes the scene with data passed from BootScene.
+   * @param {Object} data - The data object containing scene configuration.
+   */
   init(data) {
     // Save the scene configuration passed from BootScene.
     this.sceneConfig = data.sceneConfig;
   }
   
+  /**
+   * Preloads assets based on the scene configuration and updates the loading bar.
+   */
   preload() {
     // Show the loading bar again while assets load.
     const loadingBar = document.getElementById('loading-bar');
@@ -72,6 +92,9 @@ class MainScene extends Phaser.Scene {
     });
   }
   
+  /**
+   * Creates the game map and sets up player controls.
+   */
   create() {
     const { map, legends } = this.sceneConfig;
     
@@ -104,6 +127,9 @@ class MainScene extends Phaser.Scene {
     });
   }
   
+  /**
+   * Updates the player's position based on keyboard input.
+   */
   update() {
     // Update player movement based on keyboard input.
     if (this.player) {
@@ -115,6 +141,7 @@ class MainScene extends Phaser.Scene {
   }
 }
 
+// Configuration for the Phaser game instance.
 const config = {
   type: Phaser.AUTO,
   width: 800,
@@ -124,4 +151,5 @@ const config = {
   scene: [BootScene, MainScene],
 };
 
+// Create a new Phaser game instance with the specified configuration.
 const game = new Phaser.Game(config);
