@@ -1,0 +1,37 @@
+{
+  "map": [
+    [
+      "S",
+      ".",
+      ".",
+      "T"
+    ],
+    [
+      ".",
+      "#",
+      ".",
+      "."
+    ],
+    [
+      ".",
+      ".",
+      ".",
+      "M"
+    ],
+    [
+      "T",
+      ".",
+      ".",
+      "E"
+    ]
+  ],
+  "legends": {
+    "S": "/assets/player.png",
+    "E": "/assets/exit.png",
+    "T": "/assets/treasure.png",
+    "M": "/assets/monster.png",
+    "#": "/assets/wall.png",
+    ".": "/assets/path.png"
+  },
+  "version": 1737236322276
+}
